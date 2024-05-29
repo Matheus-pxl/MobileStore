@@ -1,9 +1,11 @@
 package com.mobile.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mobile.R
 import com.mobile.model.Produto
 import com.mobile.ui.adapter.ListaProdutosAdapter
@@ -14,15 +16,6 @@ class ListaLojaActivity : AppCompatActivity(R.layout.activity_lista_loja) {
         super.onCreate(savedInstanceState)
         setTitle("Loja")
 
-//        val nome = findViewById<TextView>(R.id.lista_nome_item)
-//        nome.text = "Cesta de Frutas"
-//
-//        val desc = findViewById<TextView>(R.id.lista_descricao)
-//        desc.text = "laranja, manga e maça"
-//
-//        val valor = findViewById<TextView>(R.id.lista_valor)
-//        valor.text = "19.99"
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = ListaProdutosAdapter(context = this, produtos = listOf(
             Produto(
@@ -32,6 +25,10 @@ class ListaLojaActivity : AppCompatActivity(R.layout.activity_lista_loja) {
                 nome = "teste2", descricao = "descricao do item 2", valor = BigDecimal("29.99"),
             )
         ))
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val fabAbrirFormulario = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        fabAbrirFormulario.setOnClickListener{
+            val intent = Intent(this, FormularioActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
