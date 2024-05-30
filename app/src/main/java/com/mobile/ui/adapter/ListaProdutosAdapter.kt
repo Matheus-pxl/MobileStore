@@ -8,11 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.R
 import com.mobile.model.Produto
-import org.w3c.dom.Text
-import java.util.zip.Inflater
 
-class ListaProdutosAdapter(private val context: Context, private val produtos: List<Produto>) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
+class ListaProdutosAdapter(private val context: Context, produtos: List<Produto>) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
+    private val produtos = produtos.toMutableList()
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun vincula(produto: Produto) {
@@ -40,6 +39,12 @@ class ListaProdutosAdapter(private val context: Context, private val produtos: L
         holder.vincula(produto)
 
 
+    }
+
+    fun atualiza(produtos: List<Produto>) {
+        this.produtos.clear()
+        this.produtos.addAll(produtos)
+        notifyDataSetChanged()
     }
 
 }

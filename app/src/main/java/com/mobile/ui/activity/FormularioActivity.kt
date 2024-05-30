@@ -2,18 +2,20 @@ package com.mobile.ui.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.mobile.R
+import com.mobile.database.dao.ProdutosDao
 import com.mobile.model.Produto
 import java.math.BigDecimal
 
 class FormularioActivity : AppCompatActivity(R.layout.activity_formulario) {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setTitle("Cadastrar um produto")
         val botaoSalvar = findViewById<Button>(R.id.form_botao_salvar)
         botaoSalvar.setOnClickListener {
             //bind
@@ -32,11 +34,14 @@ class FormularioActivity : AppCompatActivity(R.layout.activity_formulario) {
                 BigDecimal(valorEmText)
             }
 
-            Produto(
+            val produtoNovo = Produto(
                 nome=nome,
                 descricao=descricao,
                 valor= valor
             )
+            val dao = ProdutosDao()
+            dao.adiciona(produtoNovo)
+            finish()
         }
 
     }

@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ListaLojaActivity">
+    tools:context=".ui.activity.ListaProdutosActivity">
 
 <!--    se o ITEM esta ocupando toda a tela, mudar o height no layout do item para wrap content-->
     <androidx.recyclerview.widget.RecyclerView
