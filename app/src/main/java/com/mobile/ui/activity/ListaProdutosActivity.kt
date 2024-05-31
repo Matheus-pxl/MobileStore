@@ -14,25 +14,30 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
     private val dao =ProdutosDao()
     private val adapter= ListaProdutosAdapter(context = this, produtos = dao.buscaTodos())
 
+    //codigo no onCreate so sera executado na hora da criação
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTitle("Loja")
         configuraRecyclewView()
+        configuraFAB()
 
     }
     //O CODIGO PRECISA ESTAR NO ON RESUME PARA SER 'REEXECUTADO'
     override fun onResume() {
         super.onResume()
         adapter.atualiza(dao.buscaTodos())
-        configuraFAB()
     }
 
     private fun configuraFAB() {
         val fabAbrirFormulario = findViewById<FloatingActionButton>(R.id.floatingActionButton)
         fabAbrirFormulario.setOnClickListener {
-            val intent = Intent(this, FormularioActivity::class.java)
-            startActivity(intent)
+            vaiParaFormularioProduto()
         }
+    }
+
+    private fun vaiParaFormularioProduto() {
+        val intent = Intent(this, FormularioActivity::class.java)
+        startActivity(intent)
     }
 
     private fun configuraRecyclewView() {
