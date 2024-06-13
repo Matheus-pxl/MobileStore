@@ -40,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="@id/lista_nome_item"
             app:layout_constraintStart_toStartOf="@id/lista_nome_item"
             app:layout_constraintTop_toBottomOf="@+id/lista_nome_item"
-            tools:text="drescricao do item" />
+            tools:text="descricao do item" />
 
         <TextView
             android:id="@+id/lista_valor"
@@ -59,13 +59,21 @@
             app:layout_constraintTop_toBottomOf="@+id/lista_descricao"
             tools:text="19.88" />
 
+<!--        <androidx.constraintlayout.widget.Guideline-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/guideline"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintGuide_percent="0.3"/>-->
+
         <ImageView
             android:id="@+id/imageview"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.3"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/lista_nome_item"
+            app:layout_constraintEnd_toStartOf="@+id/lista_nome_item"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/produto_1"

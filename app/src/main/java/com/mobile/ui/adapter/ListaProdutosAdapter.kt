@@ -2,13 +2,13 @@ package com.mobile.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.mobile.R
 import com.mobile.databinding.ProdutoItemBinding
 import com.mobile.model.Produto
+import java.math.BigDecimal
+import java.text.NumberFormat
+import java.util.Locale
 
 class ListaProdutosAdapter(private val context: Context, produtos: List<Produto>) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
@@ -27,7 +27,18 @@ class ListaProdutosAdapter(private val context: Context, produtos: List<Produto>
 
 //            val valor = itemView.findViewById<TextView>(R.id.lista_valor)
             val valor = binding.listaValor
-            valor.text= produto.valor.toPlainString()
+            val valorEmMoeda: String = formataParaMoedaBrasileira(produto.valor)
+            valor.text= valorEmMoeda
+        }
+
+        private fun formataParaMoedaBrasileira(valor: BigDecimal): String {
+            val formatador: NumberFormat = NumberFormat.getCurrencyInstance(
+                Locale(
+                    "pt",
+                    "br"
+                )
+            ) //buscando simbolo do Cifrao brasileiro
+            return formatador.format(valor)
         }
     }
 
