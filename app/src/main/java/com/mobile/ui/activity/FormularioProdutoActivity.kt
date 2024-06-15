@@ -1,6 +1,7 @@
 package com.mobile.ui.activity
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.mobile.R
 import com.mobile.database.dao.ProdutosDao
@@ -17,6 +18,14 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         setContentView(binding.root)
         setTitle("Cadastrar um produto")
         configuraBotaoSalvar()
+        binding.imageViewProduto.setOnClickListener{
+            AlertDialog.Builder(this).setTitle("titulo do alert Dialog")
+                .setPositiveButton("Confirmar") { _, _ -> }
+                .setNegativeButton("Cancelar") { _, _ -> }
+                .setView(R.layout.formulario_imagem)
+                .setMessage("mensagem do Dialog alert").show()
+
+        }
 
     }
 

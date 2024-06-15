@@ -2,9 +2,8 @@ package com.mobile.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mobile.R
 import com.mobile.database.dao.ProdutosDao
 import com.mobile.databinding.ActivityListaProdutosBinding
@@ -12,8 +11,8 @@ import com.mobile.ui.adapter.ListaProdutosAdapter
 
 class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos) {
 
-    private val dao =ProdutosDao()
-    private val adapter= ListaProdutosAdapter(context = this, produtos = dao.buscaTodos())
+    private val dao = ProdutosDao()
+    private val adapter = ListaProdutosAdapter(context = this, produtos = dao.buscaTodos())
 
     private val binding by lazy {
         ActivityListaProdutosBinding.inflate(layoutInflater)
@@ -28,6 +27,7 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
         configuraFAB()
 
     }
+
     //O CODIGO PRECISA ESTAR NO ON RESUME PARA SER 'REEXECUTADO'
     override fun onResume() {
         super.onResume()
