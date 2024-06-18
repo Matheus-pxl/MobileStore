@@ -25,6 +25,10 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
         setContentView(binding.root)
         configuraRecyclewView()
         configuraFAB()
+        AlertDialog.Builder(this).setTitle("titulo do alert Dialog")
+            .setPositiveButton("Confirmar") { _, _ -> }
+            .setNegativeButton("Cancelar") { _, _ -> }
+            .setMessage("mensagem do Dialog alert").show()
 
     }
 
